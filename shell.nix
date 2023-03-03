@@ -71,6 +71,11 @@ in helpers.mkShell [
       pip install git+https://github.com/whacked/Jupyter-multi_outputs
       jupyter nbextension install --py lc_multi_outputs --user
       jupyter nbextension enable --py lc_multi_outputs --user
+
+      ./scripts/environment-management/patch-jupyter-venv.sh
+
+      pip install bash_kernel==0.9.0
+      python -m bash_kernel.install
     }
     ensure-venv setup-venv
   '' + ''

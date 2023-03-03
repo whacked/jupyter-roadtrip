@@ -1,6 +1,6 @@
 # jupyter roadtrip
 
-an opinionated, `nbdev`-enabled, batteries-included jupyter environment to faciliate notebook usage, maintenance, and interoperation
+an opinionated, [nbdev](https://nbdev.fast.ai/)-enabled, batteries-included jupyter environment to faciliate notebook usage, maintenance, and interoperation
 
 ## latest "works for me" version
 
@@ -36,10 +36,11 @@ once in the shell, you should be able to run `jupyter notebook` and any of the `
 
 # details
 
-This environment installs all packages necessary to run a working [nbdev](https://nbdev.fast.ai/) notebook environment, including the (2 recommended extensions)[https://nbdev.fast.ai/tutorials/tutorial.html#install-collapsible-headings-and-toc2] (Collapsible headings and TOC2) listed in the [tutorial](https://nbdev.fast.ai/tutorials/tutorial.html).
+This environment installs all packages necessary to run a working `nbdev` notebook environment, including the (2 recommended extensions)[https://nbdev.fast.ai/tutorials/tutorial.html#install-collapsible-headings-and-toc2] (Collapsible headings and TOC2) listed in the [tutorial](https://nbdev.fast.ai/tutorials/tutorial.html).
 
 In total, this install enables these useful extensions:
 
+- [bash kernel for IPython](https://github.com/takluyver/bash_kernel)
 - nbextensions manager tab inthe jupyter main view
 - Collapsible Headings: collapse markdown sections
 - Codefolding: fold code in cells
@@ -47,7 +48,7 @@ In total, this install enables these useful extensions:
 - toggle line numbers in cells
 - Freeze: mark cells read-only / frozen
 - Scratchpad: throw-away / temporary code execution area
-- Autopep8: auto-format / clean up cell code using pep8
+- Autopep8: auto-format / clean up cell code using pep8 (note this extension causes an annoying popup to appear when opening bash kernel notebooks)
 - datestamper: install current datestamp
 - Table of Contents (2): shows navigation panel to jump to markdown section headings
 - Variable Inspector
