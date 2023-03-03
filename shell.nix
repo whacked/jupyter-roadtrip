@@ -9,6 +9,7 @@ in helpers.mkShell [
 ] {
   buildInputs = [
     pkgs.gnumake
+    pkgs.pastel
 
     pkgs.python310Full
     pkgs.python310Packages.autopep8
@@ -22,8 +23,12 @@ in helpers.mkShell [
 
     pkgs.graphviz
     pkgs.nodejs
-    pkgs.quarto
-  ];  # join lists with ++
+  ] ++ (
+    if pkgs.stdenv.isLinux then [
+      pkgs.quarto
+    ] else [
+    ]
+  );  # join lists with ++
 
   nativeBuildInputs = [
     (builtins.fetchurl {
@@ -32,7 +37,17 @@ in helpers.mkShell [
     })
   ];
 
-  shellHook = ''
+  shellHook = (
+    if pkgs.stdenv.isDarwin then ''
+    ### PREFLIGHT
+    if ! command -v quarto &> /dev/null; then
+      pastel paint red "program 'quarto' not found in the path. nbdev requires it to work"
+      echo -n "you can obtain it manually from "
+      pastel paint yellow https://quarto.org/docs/get-started
+      exit
+    fi
+    '' else ''
+    '') + ''
     ### SETUP
     export VIRTUAL_ENV=''${VIRTUAL_ENV-$PWD/venv}
     # FIX for ImportError: libstdc++.so.6: cannot open shared object file: No such file or directory
