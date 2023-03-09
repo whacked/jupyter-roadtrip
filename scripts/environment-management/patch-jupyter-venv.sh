@@ -1,7 +1,24 @@
 #!/usr/bin/env bash
+# ---
+# jupyter:
+#   jupytext:
+#     formats: ipynb,sh:light
+#     text_representation:
+#       extension: .sh
+#       format_name: light
+#       format_version: '1.5'
+#       jupytext_version: 1.14.5
+#   kernelspec:
+#     display_name: Bash
+#     language: bash
+#     name: bash
+# ---
+
+# **NOTE** to ensure bash script compatibility when outputting from jupytext, you need to ensure the notebook's metadata has `jupyter/executable` set to `/usr/bin/env bash`. The notebook's metadata can be edited as json via `Edit -> Edit Notebook Metadata` in the menu
 
 # this script is a patch to fix what looks like https://github.com/ipython-contrib/jupyter_contrib_nbextensions/issues/1529
 # unpatched, the server shows warnings like these when loading a notebook:
+# ```
 #    [W 00:39:58.530 NotebookApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
 #    [W 00:39:58.535 NotebookApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
 #    [W 00:39:58.572 NotebookApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
@@ -26,8 +43,10 @@
 #    [W 00:39:59.103 NotebookApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
 #    [W 00:39:59.241 NotebookApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
 #    [W 00:39:59.246 NotebookApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
-# 
+# ```
+#
 # when using these versions:
+# ```
 # $ jupyter --version
 # IPython          : 8.11.0
 # ipykernel        : 6.21.2
@@ -42,7 +61,7 @@
 # notebook         : 6.2.0
 # qtconsole        : not installed
 # traitlets        : 5.9.0
-
+# ```
 
 DRY_RUN=0  # set to 1 to just print the changes
 SITE_PACKAGES_DIR=$(python -c 'import site; print(site.getsitepackages()[0])')

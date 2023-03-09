@@ -45,6 +45,8 @@ This environment installs all packages necessary to run a working `nbdev` notebo
 In total, this install enables these useful extensions:
 
 - [bash kernel for IPython](https://github.com/takluyver/bash_kernel)
+- [jupytext](https://github.com/mwouts/jupytext)
+- [LC multi outputs (whacked's fork)](https://github.com/whacked/Jupyter-multi_outputs/): keeps repeated execution of the same cell into separate, timestamped tabs
 - nbextensions manager tab inthe jupyter main view
 - Collapsible Headings: collapse markdown sections
 - Codefolding: fold code in cells
@@ -56,5 +58,4 @@ In total, this install enables these useful extensions:
 - datestamper: install current datestamp
 - Table of Contents (2): shows navigation panel to jump to markdown section headings
 - Variable Inspector
-- LC multi outputs (whacked's fork): keeps repeated execution of the same cell into separate, timestamped tabs
 

@@ -68,6 +68,7 @@ in helpers.mkShell [
         nbconvert==7.2.9 \
         nbformat==5.7.3 \
         nbdev==2.3.12 \
+        jupytext==1.14.5 \
         jupyter_contrib_nbextensions==0.5.1 \
         jupyter_nbextensions_configurator
       jupyter contrib nbextension install --user
