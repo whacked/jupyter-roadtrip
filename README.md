@@ -34,7 +34,7 @@ a working [Nix package manager environment](https://nixos.org/download.html)
 
 # usage
 
-enter the environment with `nix-shell`.
+if using nix >= 2.4 with nix command enabled (how to [enable](https://nixos.wiki/wiki/Nix_command)), enter the environment with `nix develop`; otherwise, enter with`nix-shell`.
 
 once in the shell, you should be able to run `jupyter notebook` and any of the `nbdev_*` functions
 
