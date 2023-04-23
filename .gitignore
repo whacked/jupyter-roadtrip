@@ -1,6 +1,20 @@
 ### AUTO-POPULATED. DO NOT EDIT
 ### user ignores should go in .gitignore.local
 
+### src: https://raw.githubusercontent.com/github/gitignore/main/community/Python/JupyterNotebooks.gitignore
+# gitignore template for Jupyter Notebooks
+# website: http://jupyter.org/
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Remove previous ipynb_checkpoints
+#   git rm -r .ipynb_checkpoints/
+
 ### src: https://raw.githubusercontent.com/github/gitignore/master/Clojure.gitignore
 Leiningen.gitignore
 ### src: https://raw.githubusercontent.com/github/gitignore/master/Global/Emacs.gitignore
