@@ -27,6 +27,7 @@
       } {
         # buildInputs = common.getBuildInputs pkgs;
         buildInputs = [
+          pkgs.bashInteractive
           pkgs.gnumake
           pkgs.pastel
 
