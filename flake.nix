@@ -104,7 +104,7 @@
             jupyter nbextension install --py lc_multi_outputs --user
             jupyter nbextension enable --py lc_multi_outputs --user
 
-            ./scripts/environment-management/patch-jupyter-venv.sh
+            bash ./scripts/environment-management/patch-jupyter-venv.sh
 
             pip install bash_kernel==0.9.0
             python -m bash_kernel.install
