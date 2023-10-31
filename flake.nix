@@ -31,15 +31,15 @@
           pkgs.gnumake
           pkgs.pastel
 
-          pkgs.python310Full
-          pkgs.python310Packages.autopep8
-          pkgs.python310Packages.toolz
-          pkgs.python310Packages.matplotlib
-          pkgs.python310Packages.numpy
-          pkgs.python310Packages.pandas
-          pkgs.python310Packages.mplfinance
-          pkgs.python310Packages.seaborn
-          pkgs.python310Packages.more-itertools
+          pkgs.python3Full
+          pkgs.python3Packages.autopep8
+          pkgs.python3Packages.toolz
+          pkgs.python3Packages.matplotlib
+          pkgs.python3Packages.numpy
+          pkgs.python3Packages.pandas
+          pkgs.python3Packages.mplfinance
+          pkgs.python3Packages.seaborn
+          pkgs.python3Packages.more-itertools
 
           pkgs.graphviz
           pkgs.nodejs
@@ -65,26 +65,13 @@
           export VIRTUAL_ENV=''${VIRTUAL_ENV-$PWD/venv}
           # FIX for ImportError: libstdc++.so.6: cannot open shared object file: No such file or directory
           # but note that gcc may be a costly import
-          export LD_LIBRARY_PATH=${pkgs.gcc-unwrapped.lib}/lib:$LD_LIBRARY_PATH
+          # export LD_LIBRARY_PATH=${pkgs.gcc-unwrapped.lib}/lib:$LD_LIBRARY_PATH
+          export LD_LIBRARY_PATH=${pkgs.zlib}/lib:${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH
           export JUPYTER_CONFIG_DIR=''${JUPYTER_CONFIG_DIR-$PWD/.jupyter}
           if [ ! -e $JUPYTER_CONFIG_DIR ]; then
             mkdir $JUPYTER_CONFIG_DIR
           fi
-          setup-venv() {  # install all expected virutalenv packages
-            # see note at https://stackoverflow.com/a/65599505
-            # on nb extensions (in)compatibility.
-            # below versions are from trial and error
-            pip install \
-              notebook==6.2.0 \
-              jupyter_server==2.3.0 \
-              jupyter_core==5.2.0 \
-              nbconvert==7.2.9 \
-              nbformat==5.7.3 \
-              nbdev==2.3.12 \
-              jupytext==1.14.5 \
-              jupyter_contrib_nbextensions==0.5.1 \
-              jupyter_nbextensions_configurator
-            jupyter contrib nbextension install --user
+          setup-jupyter-extensions() {
             ENABLE_BUNDLED_EXTENSIONS=(
                 code_prettify/autopep8
                 codefolding/main
@@ -109,6 +96,24 @@
 
             pip install bash_kernel==0.9.0
             python -m bash_kernel.install
+          }
+          setup-venv() {  # install all expected virutalenv packages
+            # see note at https://stackoverflow.com/a/65599505
+            # on nb extensions (in)compatibility.
+            # below versions are from trial and error
+            pip install \
+              twine==4.0.2 \
+              notebook==6.2.0 \
+              jupyter_server==2.3.0 \
+              jupyter_core==5.2.0 \
+              nbconvert==7.2.9 \
+              nbformat==5.7.3 \
+              nbdev==2.3.12 \
+              jupytext==1.14.5 \
+              jupyter_contrib_nbextensions==0.5.1 \
+              jupyter_nbextensions_configurator
+            jupyter contrib nbextension install --user
+            setup-jupyter-extensions
           }
           ensure-venv setup-venv
         '' + ''
